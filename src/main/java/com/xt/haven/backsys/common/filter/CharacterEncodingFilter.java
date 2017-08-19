@@ -11,6 +11,9 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+
+import com.xt.haven.backsys.common.servlet.GetServletRequestWrapper;
 
 /**
  * @Description:TODO
@@ -27,9 +30,20 @@ public class CharacterEncodingFilter implements Filter{
 		encoding = filterConfig.getInitParameter("encoding");
 	}
 
+	/**
+	 * 
+	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		request.setCharacterEncoding(encoding);
+		HttpServletRequest hRequest = (HttpServletRequest) request;
+		if("GET".equals(hRequest.getMethod())){
+			if(!(hRequest instanceof GetServletRequestWrapper)){
+				hRequest = new GetServletRequestWrapper(hRequest, encoding);
+			}
+		}else{
+			request.setCharacterEncoding(encoding);
+		}
+		chain.doFilter(hRequest, response);
 	}
 
 	public void destroy() {
