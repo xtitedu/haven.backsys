@@ -1,343 +1,268 @@
-<%@ page session="false" %>
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="ctxPath" value="${pageContext.request.contextPath}"></c:set>
+<c:set var="ctxPath" value="${pageContext.request.contextPath }" scope="page"></c:set>
 <!DOCTYPE html>
-<html lang="zh-cn">
-	<head>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<meta charset="utf-8" />
-		<title>兴唐教育--企业开发平台 - 登录</title>
+<html lang="en">
+<head>
+<title>郑州兴唐</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<meta name="description" content="Java企业通用开发平台框架 |登录页面" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<link rel="stylesheet" href="${ctxPath }/static/css/bootstrap.min.css" />
+<link rel="stylesheet" href="${ctxPath }/static/css/camera.css" />
+<link rel="stylesheet" href="${ctxPath }/static/css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" href="${ctxPath }/static/css/matrix-login.css" />
+<link rel="stylesheet" href="${ctxPath }/static/css/font-awesome.css" rel="stylesheet" />
+<script type="text/javascript" src="${ctxPath }/static/js/jquery-1.9.1.min.js"></script>
 
-		<!-- bootstrap & fontawesome -->
-		<link rel="stylesheet" href="${ctxPath}/static/css/bootstrap.css" />
-		<link rel="stylesheet" href="${ctxPath}/static/css/font-awesome.css" />
+</head>
+<body>
 
-		<!-- text fonts -->
-		<link rel="stylesheet" href="${ctxPath}/static/css/ace-fonts.css" />
-
-		<!-- ace styles -->
-		<link rel="stylesheet" href="${ctxPath}/static/css/ace.css" />
-
-		<!--[if lte IE 9]>
-			<link rel="stylesheet" href="${ctxPath}/static/assets/css/ace-part2.css" />
-		<![endif]-->
-		<link rel="stylesheet" href="${ctxPath}/static/css/ace-rtl.css" />
-
-		<!--[if lte IE 9]>
-		  <link rel="stylesheet" href="${ctxPath}/static/assets/css/ace-ie.css" />
-		<![endif]-->
-
-		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!--[if lt IE 9]>
-		<script src="${ctxPath}/static/assets/js/html5shiv.js"></script>
-		<script src="${ctxPath}/static/assets/js/respond.js"></script>
-		<![endif]-->
-	</head>
-
-	<body class="login-layout light-login">
-		<div class="main-container">
-			<div class="main-content">
-				<div class="row">
-					<div class="col-sm-10 col-sm-offset-1">
-						<div class="login-container">
-							 
-							<div class="center">
-								<h1>
-									<span class="red">&nbsp;</span>
-								</h1>
-							</div>
-
-							<div class="space-6"></div>
-
-							<div class="position-relative">
-								<div id="login-box" class="login-box visible widget-box no-border">
-									<div class="widget-body">
-										<div class="widget-main">
-											<h4 class="header blue lighter bigger">
-												<i class="ace-icon fa fa-coffee green"></i>
-												登录 企业后台管理系统
-											</h4>
-
-											<div class="space-6"></div>
-
-											<form id="validationLoginForm" method="post" action="#">
-												<fieldset>
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<!-- <input id="loginEmail" name="email" type="text" class="form-control" placeholder="邮箱" data-rel="tooltip" title="邮箱作为账号" data-placement="right" /> -->
-															<input id="loginEmail" name="email" type="text" class="form-control" placeholder="邮箱" />
-															<i class="ace-icon fa fa-user"></i>
-														</span>
-													</label>
-
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input id="loginPassword" name="password" type="password" class="form-control" placeholder="密码" />
-															<i class="ace-icon fa fa-lock"></i>
-														</span>
-													</label>
-													
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<span id="loginTip" style="color:#A94442"></span>
-														</span>
-													</label>
-
-													<div class="space"></div>
-
-													<div class="clearfix">
-														<label class="inline">
-															<input id="remember-me" name="remember-me" type="checkbox" class="ace" />
-															<span class="lbl">下次自动登录</span>
-														</label>
-
-														<button id="loginButton" type="button" class="width-35 pull-right btn btn-sm btn-primary">
-															<i class="ace-icon fa fa-key"></i>
-															<span class="bigger-110">登录</span>
-														</button>
-													</div>
-
-													<div class="space-4"></div>
-												</fieldset>
-											</form>
-
-										</div><!-- /.widget-main -->
-
-										<div class="toolbar clearfix">
-											<div>
-												<a href="#" data-target="#forgot-box" class="forgot-password-link">
-													<i class="ace-icon fa fa-arrow-left"></i>
-													忘记密码？
-												</a>
-											</div>
-
-											<div>
-												<a href="#" data-target="#signup-box" class="user-signup-link">
-													立即注册
-													<i class="ace-icon fa fa-arrow-right"></i>
-												</a>
-											</div>
-										</div>
-									</div><!-- /.widget-body -->
-								</div><!-- /.login-box -->
-
-								<div id="forgot-box" class="forgot-box widget-box no-border">
-									<div class="widget-body">
-										<div class="widget-main">
-											<h4 class="header red lighter bigger">
-												<i class="ace-icon fa fa-key"></i>
-												找回密码
-											</h4>
-
-											<div class="space-6"></div>
-											<p>
-												输入您的电子邮箱
-											</p>
-
-											<form id="validationRetrieveForm" method="post" action="#">
-												<fieldset>
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input id="retrieveEmail" name="email" type="email" class="form-control" placeholder="邮箱" data-rel="tooltip" title="邮箱作为用户名" data-placement="right" />
-															<i class="ace-icon fa fa-envelope"></i>
-														</span>
-													</label>
-													
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<span id="retrieveTip" style="color:#A94442"></span>
-														</span>
-													</label>
-
-													<div class="clearfix">
-														<button id="retrieveButton" type="button" class="width-35 pull-right btn btn-sm btn-danger">
-															<i class="ace-icon fa fa-lightbulb-o"></i>
-															<span class="bigger-110">发送</span>
-														</button>
-													</div>
-												</fieldset>
-											</form>
-										</div><!-- /.widget-main -->
-
-										<div class="toolbar center">
-											<a href="#" data-target="#login-box" class="back-to-login-link">
-												登录
-												<i class="ace-icon fa fa-arrow-right"></i>
-											</a>
-										</div>
-									</div><!-- /.widget-body -->
-								</div><!-- /.forgot-box -->
-
-								<div id="signup-box" class="signup-box widget-box no-border">
-									<div class="widget-body">
-										<div class="widget-main">
-											<h4 class="header green lighter bigger">
-												<i class="ace-icon fa fa-users blue"></i>
-												注册Java企业通用开发平台框架
-											</h4>
-
-											<div class="space-6"></div>
-
-											<form id="validationRegisterForm" method="post" action="#">
-												<fieldset>
-												    <label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input id="userName" name="userName" type="text" class="form-control" placeholder="姓名" />
-															<i class="ace-icon fa fa-user"></i>
-														</span>
-													</label>
-													
-													<label class="block clearfix">
-														<label>
-															<input name="sex" type="radio" class="ace" value="1" checked />
-															<span class="lbl">男</span>
-														</label>
-														<label class="pull-right">
-															<input name="sex" type="radio" class="ace" value="2" />
-															<span class="lbl">女</span>
-														</label>
-													</label>
-													
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input id="email" name="email" type="email" class="form-control" placeholder="邮箱" data-rel="tooltip" title="邮箱用于登录和找回密码" data-placement="right" />
-															<i class="ace-icon fa fa-envelope"></i>
-														</span>
-													</label>
-													
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input id="phone" name="phone" type="text" class="form-control" placeholder="联系电话" />
-															<i class="ace-icon fa fa-phone"></i>
-														</span>
-													</label>
-													
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input id="birthday" name="birthday" type="text" class="form-control" placeholder="生日" readonly />
-															<i class="ace-icon fa fa-clock-o"></i>
-														</span>
-													</label>
-
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input id="password" name="password" type="password" class="form-control" placeholder="密码" />
-															<i class="ace-icon fa fa-lock"></i>
-														</span>
-													</label>
-
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input id="repeatPassword" name="repeatPassword" type="password" class="form-control" placeholder="确认密码" />
-															<i class="ace-icon fa fa-retweet"></i>
-														</span>
-													</label>
-
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input name="agree" id="agree" type="checkbox" class="ace" />
-															<span class="lbl">
-																我已阅读并接受
-																<a href="#">用户协议</a>
-															</span>
-														</span>
-													</label>
-													
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<span id="registerTip" style="color:#A94442"></span>
-														</span>
-													</label>
-
-													<div class="space-24"></div>
-
-													<div class="clearfix">
-														<button type="reset" class="width-30 pull-left btn btn-sm">
-															<i class="ace-icon fa fa-refresh"></i>
-															<span class="bigger-110">重置</span>
-														</button>
-
-														<button id="registerButton" type="button" class="width-65 pull-right btn btn-sm btn-success">
-															<span class="bigger-110">注册</span>
-															<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
-														</button>
-													</div>
-												</fieldset>
-											</form>
-										</div>
-
-										<div class="toolbar center">
-											我已注册，现在就
-											<a href="#" data-target="#login-box" class="back-to-login-link">
-												<i class="ace-icon fa fa-arrow-left"></i>
-												登录
-											</a>
-										</div>
-									</div><!-- /.widget-body -->
-								</div><!-- /.signup-box -->
-							</div><!-- /.position-relative -->
-							<div class="navbar-fixed-top align-right">
-								<br />
-								&nbsp;
-								<a id="btn-login-dark" href="#">花瓣</a>
-								&nbsp;
-								<span class="blue">/</span>
-								&nbsp;
-								<a id="btn-login-blur" href="#">风车</a>
-								&nbsp;
-								<span class="blue">/</span>
-								&nbsp;
-								<a id="btn-login-light" href="#">阳光</a>
-								&nbsp; &nbsp; &nbsp;
-							</div>
+	<div
+		style="width:100%;text-align: center;margin: 0 auto;position: absolute;">
+		<div id="loginbox">
+			<form action="" method="post" name="loginForm"
+				id="loginForm">
+				<div class="control-group normal_text">
+					<h3>
+						<img src="${ctxPath }/static/img/logo.png" alt="Logo" />
+					</h3>
+				</div>
+				<div class="control-group">
+					<div class="controls">
+						<div class="main_input_box">
+							<span class="add-on bg_lg">
+							<i><img height="37" src="${ctxPath }/static/img/user.png" /></i>
+							</span><input type="text" name="userName" id="userName" value="" placeholder="请输入用户名" />
 						</div>
-					</div><!-- /.col -->
-				</div><!-- /.row -->
-			</div><!-- /.main-content -->
-			<div class="footer">
-                <div class="footer-inner">
-                    <!-- #section:basics/footer -->
-                    <div class="footer-content-nobordertop">
-                        <span class="bigger-120">
-                            <span class="blue bolder">
-                                                                                                郑州兴唐教育研发中心
-                            </span>
-                            &copy; 
-                            2015-2018
-                        </span>
-                    </div>
-                    <!-- /section:basics/footer -->
-                </div>
-            </div>
-		</div><!-- /.main-container -->
+					</div>
+				</div>
+				<div class="control-group">
+					<div class="controls">
+						<div class="main_input_box">
+							<span class="add-on bg_ly">
+							<i><img height="37" src="${ctxPath }/static/img/suo.png" /></i>
+							</span><input type="password" name="passwd" id="passwd" placeholder="请输入密码" value="" />
+						</div>
+					</div>
+				</div>
+				<div style="float:right;padding-right:10%;">
+					<div style="float: left;margin-top:3px;margin-right:2px;">
+						<font color="white">记住密码</font>
+					</div>
+					<div style="float: left;">
+						<input name="form-field-checkbox" id="saveid" type="checkbox"
+							onclick="savePasswd();" style="padding-top:0px;"/>
+					</div>
+				</div>
+				<div class="form-actions">
+					<div style="width:86%;padding-left:8%;">
+						<div style="float: left;" class="codediv">
+							<input type="text" name="code" id="code" class="login_code"
+								style="height:25px; padding-top:0px;" placeholder="验证码"/>
+						</div>
+						<div style="float: left;">
+							<i><img style="height:30px;" id="codeImg" alt="点击更换"
+								title="点击更换" src="" /></i>
+						</div>
 
-		<!-- basic scripts -->
+						<span class="pull-right" style="padding-right:3%;"><a
+							href="javascript:quxiao();" class="btn btn-success">取消</a></span> <span
+							class="pull-right"><a onclick="severCheck();"
+							class="flip-link btn btn-info" id="to-recover">登录</a></span>
 
-		<!--[if !IE]> -->
-		<script type="text/javascript">
-			window.jQuery || document.write("<script src='${ctxPath}/static/js/jquery.js'>"+"<"+"/script>");
-		</script>
-		<!-- <![endif]-->
+					</div>
+				</div>
 
-		<!--[if IE]>
-		<script type="text/javascript">
- 			window.jQuery || document.write("<script src='${ctxPath}/static/assets/js/jquery1x.js'>"+"<"+"/script>");
-		</script>
-		<![endif]-->
+			</form>
+
+
+			<div class="controls">
+				<div class="main_input_box">
+					<font color="white"><span id="nameerr">Copyright © 郑州兴唐教育研发中心  2015-2019</span></font>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="templatemo_banner_slide" class="container_wapper">
+		<div class="camera_wrap camera_emboss" id="camera_slide">
+			<div data-src="${ctxPath }/static/img/login/banner_slide_01.jpg"></div>
+			<div data-src="${ctxPath }/static/img/login/banner_slide_02.jpg"></div>
+			<div data-src="${ctxPath }/static/img/login/banner_slide_03.jpg"></div>
+		</div>
+		<!-- #camera_wrap_3 -->
+	</div>
+
+	<script type="text/javascript">
+	
+		//服务器校验
+		function severCheck(){
+			if(check()){
+				var userName = $("#userName").val();
+				var passwd = $("#passwd").val();
+				var code = loginname+"^XT^"+password + "^XT^" + $("#code").val();
+				$.ajax({
+					type: "POST",
+					url: '${ctxPath }/sysUser.action',
+			    	data: {KEYDATA:code, tm:new Date().getTime()},
+					dataType:'json',
+					cache: false,
+					success: function(data){
+						if("success" == data.result){
+							saveCookie();
+							window.location.href="main/index";
+						}else if("usererror" == data.result){
+							$("#userName").tips({
+								side : 1,
+								msg : "用户名或密码有误",
+								bg : '#FF5080',
+								time : 15
+							});
+							$("#userName").focus();
+						}else if("codeError" == data.result){
+							$("#code").tips({
+								side : 1,
+								msg : "验证码输入有误",
+								bg : '#FF5080',
+								time : 15
+							});
+							$("#code").focus();
+						}else{
+							$("#userName").tips({
+								side : 1,
+								msg : "缺少参数",
+								bg : '#FF5080',
+								time : 15
+							});
+							$("#userName").focus();
+						}
+					}
+				});
+			}
+		}
+	
+		$(document).ready(function() {
+			changeCode();
+			$("#codeImg").bind("click", changeCode);
+		});
+
+		$(document).keyup(function(event) {
+			if (event.keyCode == 13) {
+				$("#to-recover").trigger("click");
+			}
+		});
+
+		function genTimestamp() {
+			var time = new Date();
+			return time.getTime();
+		}
+
+		function changeCode() {
+			$("#codeImg").attr("src", "${ctxPath }/verifyCode.action?t=" + genTimestamp());
+		}
+
+		//客户端校验
+		function check() {
+
+			if ($("#userName").val() == "") {
+				$("#userName").tips({
+					side : 2,
+					msg : '用户名不得为空',
+					bg : '#AE81FF',
+					time : 3
+				});
+				$("#userName").focus();
+				return false;
+			} else {
+				$("#userName").val(jQuery.trim($('#userName').val()));
+			}
+
+			if ($("#passwd").val() == "") {
+				$("#passwd").tips({
+					side : 2,
+					msg : '密码不得为空',
+					bg : '#AE81FF',
+					time : 3
+				});
+				$("#passwd").focus();
+				return false;
+			}
+			if ($("#code").val() == "") {
+				$("#code").tips({
+					side : 1,
+					msg : '验证码不得为空',
+					bg : '#AE81FF',
+					time : 3
+				});
+				$("#code").focus();
+				return false;
+			}
+
+			$("#loginbox").tips({
+				side : 1,
+				msg : '正在登录 , 请稍后 ...',
+				bg : '#68B500',
+				time : 10
+			});
+
+			return true;
+		}
+
+		function savePasswd() {
+			if (!$("#saveid").attr("checked")) {
+				$.cookie('userName', '', {
+					expires : -1
+				});
+				$.cookie('passwd', '', {
+					expires : -1
+				});
+				$("#userName").val('');
+				$("#passwd").val('');
+			}
+		}
+
+		function saveCookie() {
+			if ($("#saveid").attr("checked")) {
+				$.cookie('userName', $("#userName").val(), {
+					expires : 7
+				});
+				$.cookie('passwd', $("#passwd").val(), {
+					expires : 7
+				});
+			}
+		}
+		function quxiao() {
+			$("#userName").val('');
+			$("#passwd").val('');
+		}
 		
-		<script type="text/javascript">
-			if('ontouchstart' in document.documentElement) document.write("<script src='${ctxPath}/static/js/jquery.mobile.custom.js'>"+"<"+"/script>");
-		</script>
-		
-		<script type="text/javascript" src="${ctxPath}/static/js/jquery.validate.js"></script>
-		<script type="text/javascript" src="${ctxPath}/static/js/tooltip.js"></script>
-		<script type="text/javascript" src="${ctxPath}/static/js/date-time/bootstrap-datepicker.js"></script>
-		<script type="text/javascript" src="${ctxPath}/static/js/date-time/locales/bootstrap-datepicker.zh-CN.js"></script>
-		<script type="text/javascript" src="${ctxPath}/static/js/sys/login.js"></script>
+		jQuery(function() {
+			var loginname = $.cookie('userName');
+			var password = $.cookie('passwd');
+			if (typeof(loginname) != "undefined"
+					&& typeof(password) != "undefined") {
+				$("#userName").val(loginname);
+				$("#passwd").val(password);
+				$("#saveid").attr("checked", true);
+				$("#code").focus();
+			}
+		});
+	</script>
+	<script>
+		//TOCMAT重启之后 点击左侧列表跳转登录首页 
+		if (window != top) {
+			top.location.href = location.href;
+		}
+	</script>
 
-	</body>
+	<script type="text/javascript" src="${ctxPath }/static/js/jquery-1.7.2.js"></script>
+	<script type="text/javascript" src="${ctxPath }/static/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="${ctxPath }/static/js/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" src="${ctxPath }/static/js/jquery.mobile.customized.min.js"></script>
+	<script type="text/javascript" src="${ctxPath }/static/js/camera.min.js"></script>
+	<script type="text/javascript" src="${ctxPath }/static/js/templatemo_script.js"></script>
+	<script type="text/javascript" src="${ctxPath }/static/js/jquery.tips.js"></script>
+	<script type="text/javascript" src="${ctxPath }/static/js/jquery.cookie.js"></script>
+</body>
 </html>
