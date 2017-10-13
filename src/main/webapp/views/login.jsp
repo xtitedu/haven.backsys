@@ -101,18 +101,19 @@
 			if(check()){
 				var userName = $("#userName").val();
 				var passwd = $("#passwd").val();
-				var code = loginname+"^XT^"+password + "^XT^" + $("#code").val();
+				var code = userName+"__XT__"+passwd + "__XT__" + $("#code").val();
 				$.ajax({
 					type: "POST",
-					url: '${ctxPath }/sysUser.action',
-			    	data: {KEYDATA:code, tm:new Date().getTime()},
+					url: "${ctxPath }/sysUser.action",
+			    	data: {KEYDATA:code, tm:new Date().getTime(), doMethod:"doLogin"},
 					dataType:'json',
 					cache: false,
 					success: function(data){
-						if("success" == data.result){
+						alert(data);
+						if(1 == data.code){
 							saveCookie();
-							window.location.href="main/index";
-						}else if("usererror" == data.result){
+							window.location.href="${ctxPath }/indexPage";
+						}else if("-1" == data.code){
 							$("#userName").tips({
 								side : 1,
 								msg : "用户名或密码有误",
@@ -120,7 +121,7 @@
 								time : 15
 							});
 							$("#userName").focus();
-						}else if("codeError" == data.result){
+						}else if("-2" == data.code){
 							$("#code").tips({
 								side : 1,
 								msg : "验证码输入有误",

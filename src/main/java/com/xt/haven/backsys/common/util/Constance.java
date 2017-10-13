@@ -5,4 +5,6 @@ public class Constance {
 	public static final String USER_LOGIN_INFO = "userLoginInfo";
 	
 	public static final String VER_CODE = "verCode";
+	
+	public static final String MENU_LIST = "menuList";
 }
