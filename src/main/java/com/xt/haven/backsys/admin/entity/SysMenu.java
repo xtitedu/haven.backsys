@@ -18,8 +18,6 @@ public class SysMenu {
 	
 	private String menuUrl;
 	
-	
-	
 	private int status;
 	
 }

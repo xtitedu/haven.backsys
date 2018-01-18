@@ -41,6 +41,7 @@ public class BaseServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String doMethod = request.getParameter("doMethod");
+		System.out.println("------------------------------->" + doMethod);
 		try {
 			Method method = this.getClass().getDeclaredMethod(doMethod, HttpServletRequest.class, HttpServletResponse.class);
 			method.invoke(this, request, response);

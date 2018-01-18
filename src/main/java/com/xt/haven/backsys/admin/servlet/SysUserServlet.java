@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.xt.haven.backsys.admin.entity.SysUser;
 import com.xt.haven.backsys.admin.service.SysUserService;
 import com.xt.haven.backsys.common.entity.ResMsg;
 import com.xt.haven.backsys.common.servlet.BaseServlet;
